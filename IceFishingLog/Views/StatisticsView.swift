@@ -69,39 +69,31 @@ struct StatisticsView: View {
     
     // MARK: - Season Tab
     
+    private var seasonCatches: [Catch] {
+        dataManager.currentSeasonCatches()
+    }
+    
+    private var seasonTotalWeight: Int {
+        seasonCatches.reduce(0) { $0 + $1.weight }
+    }
+    
     private var seasonTab: some View {
         ScrollView {
             VStack(spacing: 14) {
-                let seasonCatches = dataManager.currentSeasonCatches()
-                let totalWeight = seasonCatches.reduce(0) { $0 + $1.weight }
-                
                 // Season summary
                 LargeStatCard(
                     title: "Current Season",
                     mainValue: "\(seasonCatches.count)",
                     secondaryValue: "Fish caught this season",
                     details: [
-                        (label: "Total Weight", value: dataManager.displayWeight(totalWeight)),
+                        (label: "Total Weight", value: dataManager.displayWeight(seasonTotalWeight)),
                         (label: "Days on Ice", value: "\(dataManager.daysOnIce())")
                     ],
                     iconEmoji: "❄️"
                 )
                 
                 // Best day
-                if let best = dataManager.bestDay() {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MMM d, yyyy"
-                    
-                    LargeStatCard(
-                        title: "Best Day This Season",
-                        mainValue: dataManager.displayWeight(best.weight),
-                        secondaryValue: dateFormatter.string(from: best.date),
-                        details: [
-                            (label: "Fish Count", value: "\(best.count)")
-                        ],
-                        iconEmoji: "🌟"
-                    )
-                }
+                bestDayCard
                 
                 Spacer(minLength: 100)
             }
@@ -110,19 +102,35 @@ struct StatisticsView: View {
         }
     }
     
+    @ViewBuilder
+    private var bestDayCard: some View {
+        if let best = dataManager.bestDay() {
+            LargeStatCard(
+                title: "Best Day This Season",
+                mainValue: dataManager.displayWeight(best.weight),
+                secondaryValue: formatDate(best.date),
+                details: [
+                    (label: "Fish Count", value: "\(best.count)")
+                ],
+                iconEmoji: "🌟"
+            )
+        }
+    }
+    
     // MARK: - Species Tab
+    
+    private var speciesStats: [(species: String, count: Int, totalWeight: Int, biggest: Catch?)] {
+        dataManager.speciesStats()
+    }
     
     private var speciesTab: some View {
         ScrollView {
             VStack(spacing: 12) {
-                let stats = dataManager.speciesStats()
-                
-                if stats.isEmpty {
+                if speciesStats.isEmpty {
                     emptySpeciesView
                 } else {
-                    ForEach(stats.indices, id: \.self) { index in
-                        let stat = stats[index]
-                        speciesCard(stat: stat, rank: index + 1)
+                    ForEach(speciesStats.indices, id: \.self) { index in
+                        speciesCard(stat: speciesStats[index], rank: index + 1)
                     }
                 }
                 
@@ -194,55 +202,18 @@ struct StatisticsView: View {
     
     // MARK: - Records Tab
     
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        return formatter.string(from: date)
+    }
+    
     private var recordsTab: some View {
         ScrollView {
             VStack(spacing: 14) {
-                // Biggest catch ever
-                if let biggest = dataManager.biggestCatchEver() {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MMM d, yyyy"
-                    
-                    LargeStatCard(
-                        title: "Biggest Catch Ever",
-                        mainValue: dataManager.displayWeight(biggest.weight),
-                        secondaryValue: biggest.species,
-                        details: [
-                            (label: "Size", value: dataManager.displayLength(biggest.size)),
-                            (label: "Date", value: dateFormatter.string(from: biggest.catchTime))
-                        ],
-                        iconEmoji: "🏆"
-                    )
-                }
-                
-                // Best day ever
-                if let bestDay = dataManager.bestDay() {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MMM d, yyyy"
-                    
-                    LargeStatCard(
-                        title: "Best Day Ever (by weight)",
-                        mainValue: dataManager.displayWeight(bestDay.weight),
-                        secondaryValue: dateFormatter.string(from: bestDay.date),
-                        details: [
-                            (label: "Fish Count", value: "\(bestDay.count)")
-                        ],
-                        iconEmoji: "⭐"
-                    )
-                }
-                
-                // Most fish in one day
-                if let mostFish = dataManager.mostFishInOneDay() {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MMM d, yyyy"
-                    
-                    LargeStatCard(
-                        title: "Most Fish in One Day",
-                        mainValue: "\(mostFish.count)",
-                        secondaryValue: dateFormatter.string(from: mostFish.date),
-                        details: [],
-                        iconEmoji: "🎯"
-                    )
-                }
+                biggestCatchCard
+                bestDayEverCard
+                mostFishCard
                 
                 if dataManager.catches.isEmpty {
                     emptyRecordsView
@@ -252,6 +223,50 @@ struct StatisticsView: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 12)
+        }
+    }
+    
+    @ViewBuilder
+    private var biggestCatchCard: some View {
+        if let biggest = dataManager.biggestCatchEver() {
+            LargeStatCard(
+                title: "Biggest Catch Ever",
+                mainValue: dataManager.displayWeight(biggest.weight),
+                secondaryValue: biggest.species,
+                details: [
+                    (label: "Size", value: dataManager.displayLength(biggest.size)),
+                    (label: "Date", value: formatDate(biggest.catchTime))
+                ],
+                iconEmoji: "🏆"
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private var bestDayEverCard: some View {
+        if let bestDay = dataManager.bestDay() {
+            LargeStatCard(
+                title: "Best Day Ever (by weight)",
+                mainValue: dataManager.displayWeight(bestDay.weight),
+                secondaryValue: formatDate(bestDay.date),
+                details: [
+                    (label: "Fish Count", value: "\(bestDay.count)")
+                ],
+                iconEmoji: "⭐"
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private var mostFishCard: some View {
+        if let mostFish = dataManager.mostFishInOneDay() {
+            LargeStatCard(
+                title: "Most Fish in One Day",
+                mainValue: "\(mostFish.count)",
+                secondaryValue: formatDate(mostFish.date),
+                details: [],
+                iconEmoji: "🎯"
+            )
         }
     }
     

@@ -3,34 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A10000001 /* IceFishingLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000001; };
-		A10000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000002; };
-		A10000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000003; };
-		A10000004 /* Catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000004; };
-		A10000005 /* FishSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000005; };
-		A10000006 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000006; };
-		A10000007 /* DefaultFishSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000007; };
-		A10000008 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000008; };
-		A10000009 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000009; };
-		A10000010 /* CatchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010; };
-		A10000011 /* SessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000011; };
-		A10000012 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000012; };
-		A10000013 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000013; };
-		A10000014 /* AddCatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000014; };
-		A10000015 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000015; };
-		A10000016 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000016; };
-		A10000017 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000017; };
-		A10000018 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000018; };
-		A10000019 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000019; };
-		A10000020 /* TabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000020; };
+		A10000001 /* IceFishingLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000001 /* IceFishingLogApp.swift */; };
+		A10000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000002 /* ContentView.swift */; };
+		A10000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000003 /* Assets.xcassets */; };
+		A10000004 /* Catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000004 /* Catch.swift */; };
+		A10000005 /* FishSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000005 /* FishSpecies.swift */; };
+		A10000006 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000006 /* DataManager.swift */; };
+		A10000007 /* DefaultFishSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000007 /* DefaultFishSpecies.swift */; };
+		A10000008 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000008 /* PrimaryButton.swift */; };
+		A10000009 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000009 /* CustomTextField.swift */; };
+		A10000010 /* CatchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010 /* CatchCard.swift */; };
+		A10000011 /* SessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000011 /* SessionCard.swift */; };
+		A10000012 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000012 /* StatCard.swift */; };
+		A10000013 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000013 /* TodayView.swift */; };
+		A10000014 /* AddCatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000014 /* AddCatchView.swift */; };
+		A10000015 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000015 /* HistoryView.swift */; };
+		A10000016 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000016 /* SessionDetailView.swift */; };
+		A10000017 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000017 /* StatisticsView.swift */; };
+		A10000018 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000018 /* SettingsView.swift */; };
+		A10000019 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000019 /* CustomPicker.swift */; };
+		A10000020 /* TabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000020 /* TabIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A30000001 /* IceFishingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IceFishingLog.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20000001 /* IceFishingLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceFishingLogApp.swift; sourceTree = "<group>"; };
 		A20000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A20000003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		A20000018 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A20000019 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		A20000020 /* TabIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIcon.swift; sourceTree = "<group>"; };
+		A30000001 /* IceFishingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IceFishingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,9 +387,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -417,9 +419,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

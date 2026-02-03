@@ -140,9 +140,25 @@ struct TodayView: View {
                     .multilineTextAlignment(.center)
             }
             
-            Spacer()
+            // Add button here in empty state
+            Button(action: {
+                showAddCatch = true
+            }) {
+                Text("+ Log Your First Catch")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color(red: 0.95, green: 0.5, blue: 0.2))
+                    )
+            }
+            .padding(.top, 20)
+            
             Spacer()
         }
+        .padding(.bottom, 80)
     }
     
     private var addButton: some View {
@@ -151,28 +167,28 @@ struct TodayView: View {
         }) {
             HStack(spacing: 8) {
                 Text("+")
-                    .font(.system(size: 22, weight: .medium))
-                Text("Add Catch")
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 24, weight: .bold))
+                Text("Log Catch")
+                    .font(.system(size: 17, weight: .semibold))
             }
             .foregroundColor(.white)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 14)
+            .padding(.horizontal, 28)
+            .padding(.vertical, 16)
             .background(
                 Capsule()
                     .fill(
                         LinearGradient(
                             colors: [
-                                Color(red: 0.3, green: 0.55, blue: 0.85),
-                                Color(red: 0.2, green: 0.45, blue: 0.75)
+                                Color(red: 0.95, green: 0.5, blue: 0.2),
+                                Color(red: 0.9, green: 0.35, blue: 0.15)
                             ],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
-                    .shadow(color: Color(red: 0.2, green: 0.45, blue: 0.75).opacity(0.4), radius: 10, x: 0, y: 5)
+                    .shadow(color: Color(red: 0.9, green: 0.35, blue: 0.15).opacity(0.5), radius: 12, x: 0, y: 6)
             )
         }
-        .padding(.bottom, 20)
+        .padding(.bottom, 90)
     }
 }
